@@ -1,0 +1,2 @@
+set it up so that ships have to use more energy to go faster.  That way, they can essentially 'bid' on how fast
+they try to get to a star.

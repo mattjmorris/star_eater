@@ -1,5 +1,5 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/two_tuple"
+require File.dirname(__FILE__) + "/../../src/physics/two_tuple"
 
 describe TwoTuple do
 

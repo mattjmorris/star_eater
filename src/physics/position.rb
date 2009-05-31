@@ -2,9 +2,8 @@ require File.dirname(__FILE__) + "/two_tuple"
 
 class Position < TwoTuple
 
-  def nearby?(threshold, other)
-    return false if other === self
-    distance(other) < threshold
+  def within_diameter?(diameter, other)
+    distance(other) < diameter
   end
 
   def distance(other)

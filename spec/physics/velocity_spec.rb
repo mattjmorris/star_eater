@@ -1,6 +1,6 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/velocity"
-require File.dirname(__FILE__) + "/../src/vector"
+require File.dirname(__FILE__) + "/../../src/physics/velocity"
+require File.dirname(__FILE__) + "/../../src/physics/vector"
 
 describe Velocity do
 

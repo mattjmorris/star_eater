@@ -1,5 +1,5 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/vector"
+require File.dirname(__FILE__) + "/../../src/physics/vector"
 
 describe Vector do
 

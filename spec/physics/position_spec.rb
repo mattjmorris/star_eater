@@ -1,7 +1,7 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/position"
-require File.dirname(__FILE__) + "/../src/vector"
-require File.dirname(__FILE__) + "/../src/velocity"
+require File.dirname(__FILE__) + "/../../src/physics/position"
+require File.dirname(__FILE__) + "/../../src/physics/vector"
+require File.dirname(__FILE__) + "/../../src/physics/velocity"
 
 describe Position do
 
@@ -17,13 +17,13 @@ describe Position do
 
     pos1 = Position.new(10, 10)
     pos2 = Position.new(10, 20)
-    pos1.nearby?(11, pos2).should == true
-    pos1.nearby?(10, pos2).should == false
+    pos1.within_diameter?(11, pos2).should == true
+    pos1.within_diameter?(10, pos2).should == false
 
     pos1 = Position.new(10, 10)
     pos2 = Position.new(10, 10)
-    pos1.nearby?(1, pos2).should == true
-    pos1.nearby?(0, pos2).should == false    
+    pos1.within_diameter?(1, pos2).should == true
+    pos1.within_diameter?(0, pos2).should == false    
 
   end
 
