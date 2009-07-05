@@ -2,8 +2,7 @@ require File.dirname(__FILE__) + "/vector"
 
 class Velocity < Vector
 
-  attr_accessor :max_magnitude
-  attr_reader :vector
+  attr_reader :vector, :max_magnitude
 
   #***************************************************************************************
   # Velocities are designed so that once they are created, their
@@ -14,10 +13,10 @@ class Velocity < Vector
   
   def initialize(vector, max_magnitude = nil)
     @vector = vector
-    @max_magnitude = max_magnitude
-    resize_vector if max_magnitude and magnitude > max_magnitude
+    set_max_magnitude(max_magnitude) if max_magnitude
   end
 
+  # TODO - this method lets a ship override resetting based on max magnitude, which is a bug!
   def self.new_with_xy(x, y, max_magnitude = nil)
     return self.new(Vector.new(x, y), max_magnitude)
   end
@@ -54,6 +53,17 @@ class Velocity < Vector
   
   def magnitude
     Math.sqrt(self.x**2 + self.y**2)
+  end
+
+  # Allows resetting of max magnitude, which will decrease magnitude of vector if necessary
+  def set_max_magnitude(max_magnitude)
+    @max_magnitude = max_magnitude
+    resize_vector if magnitude > @max_magnitude
+  end
+
+  def to_s
+    magnitude_pretty = sprintf("%.2f", magnitude)
+    @vector.to_s + ", magnitude => #{magnitude_pretty}"
   end
 
   private

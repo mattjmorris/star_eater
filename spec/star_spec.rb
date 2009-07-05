@@ -7,10 +7,11 @@ describe Star do
   before(:each) do
     @max_x = 100
     @max_y = 100
-    # TODO - change from values to lambdas with random ranges
     @visible_limit = 10
     @invisible_limit = 5
-    @star = Star.new(:max_x => @max_x, :max_y => @max_y, :visible_limit => @visible_limit, :invisible_limit => @invisible_limit)
+    @star = Star.new(:max_x => @max_x, :max_y => @max_y)
+    @star.visible_limit = @visible_limit
+    @star.invisible_limit = @invisible_limit
   end
 
   it "should be assigned a unique id when it is created" do
@@ -88,6 +89,16 @@ describe Star do
     @star.visible.should be(false)
     @star.position.x.should_not == current_position.x
     @star.position.y.should_not == current_position.y    
+
+  end
+
+  it "should have a reward that is delivered based on collisions and reward function" do
+
+    @star.reward_function = lambda{5}
+    @star.get_reward.should be(0) # no reward set up before collision
+    @star.collision?(@star.position)
+    @star.get_reward.should be(5)
+    @star.get_reward.should be(0) # reward disappears after it is taken
 
   end
 

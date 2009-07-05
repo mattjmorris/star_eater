@@ -28,4 +28,8 @@ class Vector < TwoTuple
     return Vector.new(new_x, new_y)
   end
 
+  def to_s
+    "x => #{@x}, y => #{@y}"
+  end
+
 end

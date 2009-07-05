@@ -51,4 +51,8 @@ describe Velocity do
     new_vel.y.should == 5
   end
 
+  it "should pretty-print" do
+    @vel1.to_s.should == "x => 5, y => 10, magnitude => 11.18"
+  end
+
 end

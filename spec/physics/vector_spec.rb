@@ -38,4 +38,8 @@ describe Vector do
     new_vector.y.should == 5
   end
 
+  it "pretty prints" do
+    @vector1.to_s.should == "x => 5, y => 10"
+  end
+
 end

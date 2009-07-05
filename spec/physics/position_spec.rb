@@ -57,6 +57,12 @@ describe Position do
     vector.x.should == 5
     vector.y.should == -5
     
-  end 
+  end
+
+  it "should pretty-print itself" do
+
+    Position.new(10,20).to_s.should == "x => 10, y => 20"
+    
+  end
 
 end

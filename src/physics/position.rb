@@ -18,4 +18,8 @@ class Position < TwoTuple
     return Position.new(self.x + velocity.x, self.y + velocity.y)  
   end
 
+  def to_s
+    return "x => #{@x}, y => #{@y}"
+  end
+
 end

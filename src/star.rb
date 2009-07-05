@@ -4,10 +4,11 @@ require File.dirname(__FILE__) + "/util/auto_id"
 class Star
   include AutoId
 
-  attr_accessor :diameter, :visible
+  attr_accessor :diameter, :visible, :visible_limit, :invisible_limit 
   attr_reader :position, :id
+  attr_writer :reward_function
 
-  def initialize (params = {:max_x => 600, :max_y => 800, :visible_limit => 10, :invisible_limit => 10})
+  def initialize (params = {:max_x => 600, :max_y => 800})
 
     assign_id(id)
     
@@ -15,30 +16,44 @@ class Star
     set_min_and_max_x_and_y(params[:max_x], params[:max_y])
     set_new_random_position
 
-    @visible_limit = params[:visible_limit]
-    @invisible_limit = params[:invisible_limit]
-
     @visible = true
     reset_visiblility_counters
 
+    @visible_limit = 10
+    @invisible_limit = 10
+
+    @reward_function = lambda{0}
+    @reward = 0
+
     @tick_count = 0
-    
+
   end
 
   # Did contact occur?  Note that right now intersection is only possible if self is visible
   def collision?(other_position)
-    @visible && @position.within_diameter?(@diameter, other_position)
+    collision = @visible && @position.within_diameter?(@diameter, other_position)
+    @reward = @reward_function.call if collision
+    return collision
   end
 
   def tick
     @tick_count += 1
     @visible ? @visible_time_count += 1 : @invisible_time_count += 1
-    switch_visibility if (@invisible_time_count > @invisible_limit || @visible_time_count > @visible_limit)
+    hyperspace if (@invisible_time_count > @invisible_limit || @visible_time_count > @visible_limit)
+
+    #@logger.debug("Star tick: star visible = #{@visible}, position = #{@position.x}, #{@position.y}") if @logger
+
   end
 
   def hyperspace
     set_new_random_position
     switch_visibility(:visible => false)
+  end
+
+  def get_reward
+    reward = @reward
+    @reward = 0
+    return reward
   end
 
   private
@@ -63,7 +78,7 @@ class Star
 
   def set_new_random_position
     random_x = @min_x + rand(@max_x - @min_x + 1)
-    random_y = @min_y + rand(@min_y = @min_y + 1)
+    random_y = @min_y + rand(@max_y - @min_y + 1)
     @position = Position.new(random_x, random_y)    
   end
 
