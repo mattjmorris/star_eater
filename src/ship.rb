@@ -1,23 +1,15 @@
-require 'observer'
+#require 'observer'
 require File.dirname(__FILE__) + "/log_it"
 require File.dirname(__FILE__) + "/../src/policy/move_towards_closest_star"
 
 class Ship
-  include Observable
-  extend LogIt
+  #include Observable
+  #extend LogIt
 
   MAX_SPEED = 20
 
   attr_accessor :policy, :star_position_hash
   attr_reader :velocity, :position, :diameter, :bank
-
-  #alias original_add_observer add_observer
-
-  # Automatically add policy events as observable
-  #def add_observer(observer)
-  #  @policy.add_observer(observer)
-  #  original_add_observer(observer)
-  #end
 
   def initialize(position, velocity)
     @position = position
@@ -26,7 +18,7 @@ class Ship
     @bank = 0
     @star_position_hash = {}
     @policy = get_starting_policy
-    @policy.add_observer(self)
+    #@policy.add_observer(self)
   end
 
   def tick(position_hash)
@@ -43,13 +35,14 @@ class Ship
 
   def deliver_reward(reward, star_id)
     @bank += reward
-    notify("ship bank is now at #{@bank}")
+    #notify("ship bank is now at #{@bank}")
+    $LOGGER.info("ship bank is now at #{bank}") if $D
   end
 
   # receive notifications from sub-elements and pass on to observers
-  def update(msg)
-    notify(msg)
-  end
+  #def update(msg)
+  #  notify(msg)
+  #end
   
   private
 
@@ -62,11 +55,11 @@ class Ship
   end
 
   # any time @position changes in the tick method, notify observers
-  log({:tick => [:position]})
+  #log({:tick => [:position]})
 
-  def notify(msg)
-    changed
-    notify_observers(msg, :info)
-  end
+  #def notify(msg)
+  #  changed
+  #  notify_observers(msg, :info)
+  #end
 
 end

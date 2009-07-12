@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + "/star"
-require 'observer'
+#require 'observer'
 
 class StarCollection
-  include Observable
+  #include Observable
 
   attr_accessor :stars
   
@@ -21,10 +21,11 @@ class StarCollection
     @stars.each do |star|
       star.tick
       if star.collision?(ship.position)
-        notify("star #{star.id} was just eaten", :info)
+        #notify("star #{star.id} was just eaten", :info)
         star.hyperspace
         current_reward = star.get_reward
         ship.deliver_reward(current_reward, star.id)
+        $LOGGER.info("star #{star.id} was just eaten for a reward of #{current_reward}") if $D
         break #note that we break after the first collision, so only one star may be eaten at a time, even if > 1 were collided with.
       end
     end
@@ -39,11 +40,11 @@ class StarCollection
     return position_hash
   end
 
-  private
-
-  def notify(msg, level)
-    changed
-    notify_observers(msg, level)
-  end
+  #private
+  #
+  #def notify(msg, level)
+  #  changed
+  #  notify_observers(msg, level)
+  #end
 
 end
