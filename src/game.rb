@@ -13,10 +13,10 @@ class Game
   def initialize(params = {})
     @environment = Environment.new(params)
     num_stars = params[:num_stars] || 1
-    num_stars.times{|idx| @environment.add_element(Star.new(:max_x => @environment.width, :max_y => @environment.height))}
+    num_stars.times{|idx| @environment.add_star(Star.new(:max_x => @environment.width, :max_y => @environment.height))}
     @star_collection = StarFactory.get_simple_star_collection(@environment)
 
-    @environment.add_element(Ship.new(@environment, Velocity.new_with_xy(0,0)))
+    @environment.add_ship(Ship.new(@environment, Velocity.new_with_xy(0,0)))
     @num_ticks = 0
   end
 

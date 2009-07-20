@@ -9,12 +9,7 @@ class Environment
     @ships = []
   end
 
-  def add_element(object)
-    if (object.is_a?(Star))
-      @stars << object
-    elsif(object.is_a?(Ship))
-      @ships << object
-    end
-  end
+  def add_star(star); @stars << star; end
+  def add_ship(ship); @ships << ship; end
 
 end
