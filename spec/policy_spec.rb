@@ -17,7 +17,7 @@ describe Policy do
     velocity.y.should == -20
   end
 
-  it "should return a normalizd, summed velocity from the top 2 actions when n_top_actions_to_select is set to 2" do
+  it "should return a normalized, summed velocity from the top 2 actions when n_top_actions_to_select is set to 2" do
     @policy.num_top_actions_to_select = 2
     velocity = @policy.calc_velocity(static_ship)
     velocity.x.should == 16
