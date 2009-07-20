@@ -10,8 +10,12 @@ class DoNothing
 
   def calc_velocity(ship)
 
-    # assumes that the default @velocity is (0,0)
-    @velocity
+    @info = "#{self.class} has set velocity to zero."
+    announce_info if $D
+
+    @velocity = Velocity.new_with_xy(0,0)
+
+    return @velocity
 
   end
 

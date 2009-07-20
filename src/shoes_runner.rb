@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/game"
 
-NUM_STARS = 1
+NUM_STARS = 3
 SIZE_X = 800
 SIZE_Y = 600
 

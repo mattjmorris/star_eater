@@ -1,8 +1,6 @@
-require 'observer'
 require File.dirname(__FILE__) + "/../physics/velocity"
 
 module Action
-  include Observable
 
   attr_accessor :weight
   attr_reader :name, :velocity, :info
@@ -14,9 +12,10 @@ module Action
     @info = ""
   end
 
-  def notify(msg)
-    changed
-    notify_observers(msg)
+  private
+
+  def announce_info
+    $LOGGER.info(@info)
   end
    
 end

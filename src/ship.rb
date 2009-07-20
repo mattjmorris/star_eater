@@ -25,7 +25,11 @@ class Ship
 
     velocity.set_max_magnitude(MAX_SPEED)
 
+    $LOGGER.info("ship velocity is now #{velocity}") if $D
+
     @position = @position.move(velocity)
+
+    $LOGGER.info("ship position is now #{@position}")
 
   end
 

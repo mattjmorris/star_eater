@@ -29,7 +29,9 @@ class Policy
   def get_velocity_from_top_actions(ship)
     top_actions = get_top_n_actions
     top_actions.each { |a| a.calc_velocity(ship) }
-    get_weighted_summed_velocity(top_actions)
+    weighted_summed_velocity = get_weighted_summed_velocity(top_actions)
+    
+    return weighted_summed_velocity
   end
 
   # Returns an array of the top n actions by weight
