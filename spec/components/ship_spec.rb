@@ -1,5 +1,6 @@
 require "spec"
 require File.dirname(__FILE__) + "/../../src/components/ship"
+require File.dirname(__FILE__) + "/../../src/components/environment"
 require File.dirname(__FILE__) + "/../../src/physics/position"
 require File.dirname(__FILE__) + "/../../src/physics/velocity"
 
@@ -8,12 +9,12 @@ describe Ship do
 
   # Called before each example.
   before(:each) do
-    @ship = Ship.new(Position.new(0,0), Velocity.new_with_xy(0, 0))
+    @ship = Ship.new(Environment.new(), Velocity.new_with_xy(0, 0))
   end
 
   it "should have a position and a velocity" do
-    @ship.position.x.should be(0)
-    @ship.position.y.should be(0)
+    @ship.position.x.should be(300)
+    @ship.position.y.should be(400)
     @ship.velocity.x.should be(0)
     @ship.velocity.x.should be(0)
   end

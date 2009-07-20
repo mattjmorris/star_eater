@@ -22,9 +22,5 @@ describe Environment do
     @environment.stars.length.should > 0
   end
 
-  it "should accept the addition of ships" do
-    @environment.add_element(Ship.new)
-    @environment.ships.length.should > 0
-  end
-
+  it "should accept the addition of ships"
 end

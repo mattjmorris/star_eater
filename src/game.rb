@@ -1,20 +1,22 @@
 require File.dirname(__FILE__) + "/physics/position"
 require File.dirname(__FILE__) + "/physics/velocity"
 require File.dirname(__FILE__) + "/physics/vector"
+require File.dirname(__FILE__) + "/components/environment"
 require File.dirname(__FILE__) + "/star_factory"
 require File.dirname(__FILE__) + "/components/ship"
 require File.dirname(__FILE__) + "/policy/policy"
 
 class Game
 
-  attr_reader :star_collection, :ship, :num_ticks
+  attr_reader :environment, :num_ticks
   
   def initialize(params = {})
-    size_x = params[:size_x] || 600
-    size_y = params[:size_y] || 800
+    @environment = Environment.new(params)
     num_stars = params[:num_stars] || 1
-    @star_collection = StarFactory.get_simple_star_collection(size_x, size_y, num_stars)
-    @ship = Ship.new(Position.new(size_x/2.to_f, size_y/2.to_f), Velocity.new_with_xy(0, 0))
+    num_stars.times{|idx| @environment.add_element(Star.new(:max_x => @environment.width, :max_y => @environment.height))}
+    @star_collection = StarFactory.get_simple_star_collection(@environment)
+
+    @environment.add_element(Ship.new(@environment, Velocity.new_with_xy(0,0)))
     @num_ticks = 0
   end
 
@@ -24,9 +26,10 @@ class Game
 
     $LOGGER.info("Tick Count: #{@num_ticks}") if $D    
 
-    ship.tick(star_collection.position_hash)
-
-    star_collection.tick(ship)
+    @environment.ships.each do |ship|
+      ship.tick(@star_collection.position_hash)
+      @star_collection.tick(ship)
+    end
 
   end
 
