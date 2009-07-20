@@ -22,7 +22,8 @@ class StarCollection
         star.hyperspace
         current_reward = star.get_reward
         ship.deliver_reward(current_reward, star.id)
-        $LOGGER.info("star #{star.id} was just eaten for a reward of #{current_reward}") if $D
+        $GAME_INFO[:star_eaten] = star.id
+        $GAME_INFO[:star_reward] = current_reward
         break #note that we break after the first collision, so only one star may be eaten at a time, even if > 1 were collided with.
       end
     end

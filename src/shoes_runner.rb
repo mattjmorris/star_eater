@@ -10,8 +10,6 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
   game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS)
 
   # TODO - shoes app doesn't seem to be able to respond to update message from the subject (game).  Pass in
-  # a logger that can log to a file?
-  #game.add_observer(self)
 
   animate(30) do
     clear do
@@ -22,9 +20,7 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
       draw_ship(game.ship)
       draw_stars(game.star_collection.stars)
 
-      visibility_time = game.star_collection.stars.first.visible_limit      
-      star_info = "star is visible for #{visibility_time}"
-      #draw_info(game.updates, star_info)
+      draw_info
 
     end
   end
@@ -55,10 +51,19 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
     return @ids_to_colors[id]
   end
 
-  def update(msg, level)
+  def draw_info
     stack do
-      para msg, :stroke => orange, :margin => 1
-      #para star_info, :stroke => red, :margin => 1
+      star_info = ""
+      if $GAME_INFO[:star_info_hash]
+        $GAME_INFO[:star_info_hash].each do |k,v|
+          star_info += @ids_to_colors[k].to_s + " => " + v
+        end
+      end
+      para star_info, :stroke => blue, :margin => 1
+      info = ""
+      info += "tick count: #{$GAME_INFO[:tick_count]}" if $GAME_INFO[:tick_count]
+      info += " | ship bank: #{$GAME_INFO[:ship_bank]}" if $GAME_INFO[:ship_bank]
+      para info, :stroke => orange, :margin => 1
     end
   end
 

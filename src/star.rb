@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + "/util/auto_id"
 class Star
   include AutoId
 
-  attr_accessor :diameter, :visible, :visible_limit, :invisible_limit 
+  attr_accessor :diameter, :visible, :visible_limit, :invisible_limit, :reward_function_description
   attr_reader :position, :id
   attr_writer :reward_function
 
@@ -40,9 +40,6 @@ class Star
     @tick_count += 1
     @visible ? @visible_time_count += 1 : @invisible_time_count += 1
     hyperspace if (@invisible_time_count > @invisible_limit || @visible_time_count > @visible_limit)
-
-    #@logger.debug("Star tick: star visible = #{@visible}, position = #{@position.x}, #{@position.y}") if @logger
-
   end
 
   def hyperspace

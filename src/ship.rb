@@ -25,17 +25,17 @@ class Ship
 
     velocity.set_max_magnitude(MAX_SPEED)
 
-    $LOGGER.info("ship velocity is now #{velocity}") if $D
+    $GAME_INFO[:ship_velocity] = velocity
 
     @position = @position.move(velocity)
 
-    $LOGGER.info("ship position is now #{@position}")
+    $GAME_INFO[:ship_position] = @position
 
   end
 
   def deliver_reward(reward, star_id)
     @bank += reward
-    $LOGGER.info("ship bank is now at #{bank}") if $D
+    $GAME_INFO[:ship_bank] = @bank
   end
   
   private
