@@ -1,7 +1,7 @@
 require "spec"
 require File.dirname(__FILE__) + "/../src/policy/policy"
 require File.dirname(__FILE__) + "/../src/policy/action"
-require File.dirname(__FILE__) + "/../src/ship"
+require File.dirname(__FILE__) + "/../src/components/ship"
 
 describe Policy do
 

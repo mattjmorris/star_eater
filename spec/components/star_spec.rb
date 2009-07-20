@@ -1,5 +1,5 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/star"
+require File.dirname(__FILE__) + "/../../src/components/star"
 
 describe Star do
 

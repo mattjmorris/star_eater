@@ -1,5 +1,5 @@
-require File.dirname(__FILE__) + "/physics/position"
-require File.dirname(__FILE__) + "/util/auto_id"
+require File.dirname(__FILE__) + "/../physics/position"
+require File.dirname(__FILE__) + "/../util/auto_id"
 
 class Star
   include AutoId

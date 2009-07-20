@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/physics/position"
 require File.dirname(__FILE__) + "/physics/velocity"
 require File.dirname(__FILE__) + "/physics/vector"
 require File.dirname(__FILE__) + "/star_factory"
-require File.dirname(__FILE__) + "/ship"
+require File.dirname(__FILE__) + "/components/ship"
 require File.dirname(__FILE__) + "/policy/policy"
 
 class Game

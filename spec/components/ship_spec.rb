@@ -1,7 +1,7 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/ship"
-require File.dirname(__FILE__) + "/../src/physics/position"
-require File.dirname(__FILE__) + "/../src/physics/velocity"
+require File.dirname(__FILE__) + "/../../src/components/ship"
+require File.dirname(__FILE__) + "/../../src/physics/position"
+require File.dirname(__FILE__) + "/../../src/physics/velocity"
 
 
 describe Ship do

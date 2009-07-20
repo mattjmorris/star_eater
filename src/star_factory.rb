@@ -1,4 +1,5 @@
 # Responsible for creating different types of star collections.
+require File.dirname(__FILE__) + "/components/star"
 require File.dirname(__FILE__) + "/star_collection"
 
 class StarFactory

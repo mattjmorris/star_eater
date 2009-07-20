@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/star"
+require File.dirname(__FILE__) + "/components/star"
 
 class StarCollection
 
