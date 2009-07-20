@@ -6,7 +6,6 @@ require File.dirname(__FILE__) + "/../../src/physics/velocity"
 
 describe MoveTowardsClosestStar do
 
-  # Called before each example.
   before(:each) do
     @ship = Ship.new(Position.new(50,50), Velocity.new_with_xy(0, 0))
     @ship.star_position_hash = {1 => Position.new(100,100), 2 => Position.new(500,100)}
@@ -21,7 +20,7 @@ describe MoveTowardsClosestStar do
     velocity.x.should == 50
     velocity.y.should == 50
 
-    @mtcs.info.should == "Action MoveTowardsClosestStar has found closest star to be star id 1 and has set velocity to move towards it, with a weight of 1"
+    @mtcs.info.should == "MoveTowardsClosestStar has found closest star t be id 1 and has set velocity to moves towards it"
 
   end
 

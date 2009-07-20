@@ -31,25 +31,4 @@ describe StarCollection do
     position_hash.values.each { |p| p.class.to_s.should == "Position" }
   end
 
-  it "should announce to observers when a star has been eaten" do
-
-    @star_collection.add_observer(self)
-
-    first_star = @star_collection.stars.first
-
-    ship = Ship.new(first_star.position, Velocity.new_with_xy(0,0))
-
-    @star_collection.tick(ship)
-
-    @msg.should == "star #{first_star.id} was just eaten"
-    @level.should == :info
-
-  end
-
-  # This method is necessary to make the current object an observer
-  def update(msg, level)
-    @msg = msg
-    @level = level
-  end
-
 end

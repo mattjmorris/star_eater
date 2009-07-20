@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + "/star"
-#require 'observer'
 
 class StarCollection
-  #include Observable
 
   attr_accessor :stars
   
@@ -21,7 +19,6 @@ class StarCollection
     @stars.each do |star|
       star.tick
       if star.collision?(ship.position)
-        #notify("star #{star.id} was just eaten", :info)
         star.hyperspace
         current_reward = star.get_reward
         ship.deliver_reward(current_reward, star.id)
@@ -39,12 +36,5 @@ class StarCollection
     @stars.each { |star| position_hash[star.id] = star.position if star.visible}
     return position_hash
   end
-
-  #private
-  #
-  #def notify(msg, level)
-  #  changed
-  #  notify_observers(msg, level)
-  #end
 
 end

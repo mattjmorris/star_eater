@@ -13,7 +13,7 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
   # a logger that can log to a file?
   #game.add_observer(self)
 
-  animate(5) do
+  animate(30) do
     clear do
       background rgb(0xFF, 0xFF, 0xFF)
 
