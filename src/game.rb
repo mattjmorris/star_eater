@@ -14,9 +14,8 @@ class Game
     @environment = Environment.new(params)
     num_stars = params[:num_stars] || 1
     num_stars.times{|idx| @environment.add_star(Star.new(:max_x => @environment.width, :max_y => @environment.height))}
-    @star_collection = StarFactory.get_simple_star_collection(@environment)
-
     @environment.add_ship(Ship.new(@environment, Velocity.new_with_xy(0,0)))
+    @environment.finalize()
     @num_ticks = 0
   end
 
@@ -27,8 +26,8 @@ class Game
     $LOGGER.info("Tick Count: #{@num_ticks}") if $D    
 
     @environment.ships.each do |ship|
-      ship.tick(@star_collection.position_hash)
-      @star_collection.tick(ship)
+      ship.tick(@environment.star_collection.position_hash)
+      @environment.star_collection.tick(ship)
     end
 
   end
