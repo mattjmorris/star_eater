@@ -9,16 +9,14 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
 
   game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS)
 
-  # TODO - shoes app doesn't seem to be able to respond to update message from the subject (game).  Pass in
-
   animate(30) do
     clear do
       background rgb(0xFF, 0xFF, 0xFF)
 
       game.tick
 
-      draw_ship(game.ship)
-      draw_stars(game.star_collection.stars)
+      game.environment.ships.each{|ship| draw_ship(ship)}
+      draw_stars(game.environment.star_collection.stars)
 
       draw_info
 

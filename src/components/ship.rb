@@ -1,5 +1,5 @@
-require File.dirname(__FILE__) + "/../src/policy/move_towards_closest_star"
-require File.dirname(__FILE__) + "/policy/policy"
+require File.dirname(__FILE__) + "/../../src/policy/move_towards_closest_star"
+require File.dirname(__FILE__) + "/../policy/policy"
 
 class Ship
 
@@ -8,8 +8,8 @@ class Ship
   attr_accessor :policy, :star_position_hash
   attr_reader :velocity, :position, :diameter, :bank
 
-  def initialize(position, velocity)
-    @position = position
+  def initialize(environment, velocity)
+    @position = Position.new(environment.width/2, environment.height/2)
     @velocity = velocity
     @diameter = 20
     @bank = 0

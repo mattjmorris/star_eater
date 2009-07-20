@@ -1,6 +1,6 @@
 require "spec"
 require File.dirname(__FILE__) + "/../src/star_collection"
-require File.dirname(__FILE__) + "/../src/ship"
+require File.dirname(__FILE__) + "/../src/components/ship"
 require File.dirname(__FILE__) + "/../src/physics/velocity"
 require File.dirname(__FILE__) + "/../src/util/extend_array"
 
