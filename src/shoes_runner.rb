@@ -19,7 +19,7 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
 
       game.tick
 
-      draw_ship(game.ship)
+      game.environment.ships.each{|ship| draw_ship(ship)}
       draw_stars(game.star_collection.stars)
 
       visibility_time = game.star_collection.stars.first.visible_limit      

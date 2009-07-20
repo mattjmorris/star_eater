@@ -8,7 +8,7 @@ require File.dirname(__FILE__) + "/policy/policy"
 
 class Game
 
-  attr_reader :environment, :num_ticks
+  attr_reader :environment, :num_ticks, :star_collection
   
   def initialize(params = {})
     @environment = Environment.new(params)
