@@ -15,8 +15,8 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
 
       game.tick
 
-      game.environment.ships.each{|ship| draw_ship(ship)}
-      draw_stars(game.environment.star_collection.stars)
+      draw_ship(game.ship)
+      draw_stars(game.star_collection.stars)
 
       draw_info
 

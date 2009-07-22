@@ -19,11 +19,11 @@ describe Environment do
 
   it "should accept the addition of new stars" do
     @environment.add_star(Star.new)
-    @environment.stars.length.should > 0
+    @environment.data[:stars].length.should > 0
   end
 
   it "should accept the addition of ships" do
-    @environment.add_ship(Ship.new(@environment, Velocity.new_with_xy(0,0)))
-    @environment.ships.length.should > 0
+    @environment.add_ship(mock(Ship))
+    @environment.data[:ships].length.should > 0
   end
 end
