@@ -51,13 +51,13 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
 
   def draw_info
     stack do
-      star_info = ""
-      if $GAME_INFO[:star_info_hash]
-        $GAME_INFO[:star_info_hash].each do |k,v|
-          star_info += @ids_to_colors[k].to_s + " => " + v
-        end
-      end
-      para star_info, :stroke => blue, :margin => 1
+      #star_info = ""
+      #if $GAME_INFO[:star_info_hash]
+      #  $GAME_INFO[:star_info_hash].each do |k,v|
+      #    star_info += @ids_to_colors[k].to_s + " => " + v
+      #  end
+      #end
+      #para star_info, :stroke => blue, :margin => 1
       info = ""
       info += "tick count: #{$GAME_INFO[:tick_count]}" if $GAME_INFO[:tick_count]
       info += " | ship bank: #{$GAME_INFO[:ship_bank]}" if $GAME_INFO[:ship_bank]
