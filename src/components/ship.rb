@@ -11,7 +11,7 @@ class Ship
   def initialize(policy, position)
     @policy = policy
     @position = position
-    @velocity = Velocity.new_with_xy(position.x, position.y)
+    @velocity = Velocity.new_with_xy(0, 0)
     @diameter = 20
     @bank = 0
     @star_position_hash = {}
