@@ -8,13 +8,13 @@ class Ship
   attr_accessor :policy, :star_position_hash
   attr_reader :velocity, :position, :diameter, :bank
 
-  def initialize(environment, velocity)
-    @position = Position.new(environment.width/2, environment.height/2)
-    @velocity = velocity
+  def initialize(policy, position)
+    @policy = policy
+    @position = position
+    @velocity = Velocity.new_with_xy(position.x, position.y)
     @diameter = 20
     @bank = 0
     @star_position_hash = {}
-    @policy = get_starting_policy
   end
 
   def tick(star_position_hash)
@@ -39,13 +39,5 @@ class Ship
   end
   
   private
-
-  def get_starting_policy
-    policy = Policy.new
-    mtcs = MoveTowardsClosestStar.new
-    mtcs.weight = 2
-    policy.add_action(mtcs)
-    return policy
-  end
 
 end

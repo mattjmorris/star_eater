@@ -12,9 +12,8 @@ class Game
   
   def initialize(params = {})
     @environment = Environment.new(params)
-    num_stars = params[:num_stars] || 1
-    num_stars.times{|idx| @environment.add_star(Star.new(:max_x => @environment.width, :max_y => @environment.height))}
-    @environment.add_ship(Ship.new(@environment, Velocity.new_with_xy(0,0)))
+    initialize_stars(params)
+    initialize_ships()
     @environment.finalize()
     @num_ticks = 0
     $GAME_INFO = {}
@@ -40,5 +39,22 @@ class Game
 
   end
 
+  private
+
+  def initialize_stars(params)
+    num_stars = params[:num_stars] || 1
+    num_stars.times{|idx| @environment.add_star(Star.new(:max_x => @environment.width, :max_y => @environment.height))}
+  end
+
+  def initialize_ships()
+    # Ship A
+    policy_a = Policy.new
+    mtcs = MoveTowardsClosestStar.new
+    mtcs.weight = 2
+    policy_a.add_action(mtcs)
+    position_a = Position.new(@environment.width/2, @environment.height/2)
+    ship_a = Ship.new(policy_a, position_a)
+    @environment.add_ship(ship_a)
+  end
 end
 
