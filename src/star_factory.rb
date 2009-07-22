@@ -9,6 +9,7 @@ class StarFactory
       star.visible_limit = rand(100)
       star.invisible_limit = 20
       star.reward_function = lambda{10}
+      star.reward_function_description = "FR1: 10"
       star_collection << star
     end
     return star_collection
