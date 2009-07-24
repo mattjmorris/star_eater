@@ -8,7 +8,7 @@ class Policy
   attr_reader :actions, :velocity
   
   def initialize
-    # A set of actions should be set via actions accessor or else the ship will just sit in place (do nothing) 
+    # A set of actions should be set via actions accessor 
     @actions = []
     @last_action_info = ""
     @num_top_actions_to_select = 1
