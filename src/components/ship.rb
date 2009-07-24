@@ -29,7 +29,8 @@ class Ship
 
     $GAME_INFO[:ship_position] = @position
 
-    velocity 
+    velocity
+
   end
 
   # should use the environment to determine what stars are out there.  The environment can make this information fuzzier

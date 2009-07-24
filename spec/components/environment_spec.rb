@@ -12,13 +12,15 @@ describe Environment do
   after(:each) do
   end
 
-  it "should have 2D width" do
+  it "should have 2D area" do
     @environment.width.should_not be_nil
     @environment.height.should_not be_nil
   end
 
-  it "should accept the addition of new stars" do
-    @environment.add_star(Star.new)
+  it "should accept the addition of star collections" do
+    sc = StarCollection.new
+    sc.stars << Star.new
+    @environment.add_star_collection(sc)
     @environment.data[:stars].length.should > 0
   end
 

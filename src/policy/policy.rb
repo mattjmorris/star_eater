@@ -9,7 +9,7 @@ class Policy
   
   def initialize
     # A set of actions should be set via actions accessor or else the ship will just sit in place (do nothing) 
-    @actions = [DoNothing.new]
+    @actions = []
     @last_action_info = ""
     @num_top_actions_to_select = 1
   end
