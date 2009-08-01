@@ -22,4 +22,7 @@ class Position < TwoTuple
     return "x => #{@x}, y => #{@y}"
   end
 
+  def ==(other)
+    (other && other.x && other.y) ? self.x == other.x && self.y == other.y : false
+  end
 end

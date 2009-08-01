@@ -6,6 +6,7 @@ require File.dirname(__FILE__) + "/star_factory"
 require File.dirname(__FILE__) + "/components/ship"
 require File.dirname(__FILE__) + "/policy/policy"
 require File.dirname(__FILE__) + "/brain/brain"
+require File.dirname(__FILE__) + "/brain/simple_brain"
 
 class Game
 
@@ -44,7 +45,8 @@ class Game
 
   def initialize_ship()
     position = Position.new(@environment.width/2, @environment.height/2)
-    brain = Brain.new
+    #brain = Brain.new
+    brain = SimpleBrain.new
     Ship.new(brain, position)
   end
   
