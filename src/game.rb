@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + "/components/environment"
 require File.dirname(__FILE__) + "/star_factory"
 require File.dirname(__FILE__) + "/components/ship"
 require File.dirname(__FILE__) + "/brains/policy_based/policy"
-require File.dirname(__FILE__) + "/brains/policy_based/brain"
+require File.dirname(__FILE__) + "/brains/policy_based/reinforcement_brain"
 require File.dirname(__FILE__) + "/brains/policy_based/simple_brain"
 
 class Game
@@ -15,7 +15,7 @@ class Game
   def initialize(params = {})
     @environment = Environment.new(params)
     @star_collection = StarFactory.get_progressive_star_collection(@environment)
-    @ship = initialize_ship()
+    @ship = initialize_ship(params)
 
     @environment.add_star_collection(@star_collection)
     @environment.add_ship(@ship)
@@ -42,10 +42,14 @@ class Game
 
   private
 
-  def initialize_ship()
+  def get_brain(params)
+    brain_name = params[:brain] || :Brain
+    return Object::const_get(brain_name.to_s).new()
+  end
+
+  def initialize_ship(params)
+    brain = get_brain(params)
     position = Position.new(@environment.width/2, @environment.height/2)
-    brain = Brain.new
-    #brain = SimpleBrain.new
     Ship.new(brain, position)
   end
   

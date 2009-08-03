@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/policy"
 
-class Brain
+class ReinforcementBrain
 
   def initialize
 

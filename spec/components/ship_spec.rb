@@ -4,6 +4,7 @@ require File.dirname(__FILE__) + "/../../src/components/environment"
 require File.dirname(__FILE__) + "/../../src/physics/position"
 require File.dirname(__FILE__) + "/../../src/star_collection"
 require File.dirname(__FILE__) + "/../../src/physics/velocity"
+require File.dirname(__FILE__) + "/../../src/brains/brain"
 
 
 describe Ship do

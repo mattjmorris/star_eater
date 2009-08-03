@@ -7,27 +7,38 @@ class NonGuiRunner
   def initialize
     @logger_info =
     [
-            :tick_count,
-            :ship_position,
-            :ship_velocity,
-            :ship_bank,
-            :star_eaten,
-            :star_reward,
-            :star_info_hash,
-            :action_info
+            #:tick_count,
+            #:ship_position,
+            #:ship_velocity,
+            #:ship_bank,
+            #:star_eaten,
+            #:star_reward,
+            #:star_info_hash,
+            #:action_info
     ]
     $LOGGER = Logging.logger(STDOUT, :pattern => "%m\n", :date_pattern => "")
     $LOGGER.level = :debug
-    @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3)
-    @tick_count = 0
   end
 
   def run_game
-    100.times do
-      @tick_count += 1
-      @game.tick
-      show_log_info
-    end
+
+    brains = [:ReinforcementBrain, :SimpleBrain]
+
+    brains.each do |brain|
+
+      @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain => brain)
+      @tick_count = 0
+
+      100.times do
+        @tick_count += 1
+        @game.tick
+        show_log_info
+      end
+      
+      puts "*" * 50
+      puts "Brain #{brain.to_s} accumulated #{@game.ship.bank} points"
+      puts "*" * 50
+    end 
   end
 
   private

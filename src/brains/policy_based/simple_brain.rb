@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/brain"
+require File.dirname(__FILE__) + "/../../brains/brain"
 
 class SimpleBrain < Brain
   def initialize
