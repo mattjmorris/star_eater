@@ -18,13 +18,13 @@ class MoveTowardsClosestStar
     # if there is a closest start, move towards it, otherwise sit still and wait.
     if closest_star_position
       @velocity = Velocity.new(ship.position.get_vector_to(closest_star_position))
-      @info = "#{self.class} has found closest star to be id #{closest_star_id} and has set velocity to moves towards it"
+      $GAME_INFO[:action_info] = "#{self.class} has found closest star to be id #{closest_star_id} and has set velocity to moves towards it"
     else
       @velocity = Velocity.new_with_xy(0, 0)
-      @info = "#{self.class} has not found a closest star and is setting velocity to zero."
+      $GAME_INFO[:action_info] = "#{self.class} has not found a closest star and is setting velocity to zero."
     end
 
-    announce_info if $D
+    #announce_info
 
     return @velocity
   end

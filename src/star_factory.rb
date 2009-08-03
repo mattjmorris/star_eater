@@ -22,7 +22,7 @@ class StarFactory
       star = Star.new(:max_x => environment.width, :max_y => environment.height)
       star.visible_limit = 100
       star.invisible_limit = 1
-      star.reward_function = lambda{count * 5}
+      star.reward_function = lambda{idx * 5}
       star.reward_function_description = "FR1: #{idx * 5}"
       star_collection << star
     end

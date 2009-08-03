@@ -17,7 +17,6 @@ class Brain
   end
 
   def next_velocity(ship)
-    # Need to move this out of policy to brain
     velocity = @policy.calc_velocity(ship)
     velocity
   end

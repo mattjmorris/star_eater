@@ -15,7 +15,7 @@ module Action
   private
 
   def announce_info
-    $LOGGER.info(@info)
+    $GAME_INFO[:action_info] += @info
   end
    
 end

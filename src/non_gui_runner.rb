@@ -13,7 +13,8 @@ class NonGuiRunner
             :ship_bank,
             :star_eaten,
             :star_reward,
-            :star_info_hash
+            :star_info_hash,
+            :action_info
     ]
     $LOGGER = Logging.logger(STDOUT, :pattern => "%m\n", :date_pattern => "")
     $LOGGER.level = :debug
@@ -32,14 +33,15 @@ class NonGuiRunner
   private
 
   def show_log_info
-    
+
     $LOGGER.info("tick count = #{$GAME_INFO[:tick_count]}") if @logger_info.include?(:tick_count) and $GAME_INFO[:tick_count]
+    $LOGGER.info("star info = #{$GAME_INFO[:star_info_hash]}") if @logger_info.include?(:star_info_hash) and $GAME_INFO[:star_info_hash]
+    $LOGGER.info("action info = #{$GAME_INFO[:action_info]}") if @logger_info.include?(:action_info) and $GAME_INFO[:action_info]
     $LOGGER.info("ship velocity = #{$GAME_INFO[:ship_velocity]}") if @logger_info.include?(:ship_velocity) and $GAME_INFO[:ship_velocity]
     $LOGGER.info("ship position = #{$GAME_INFO[:ship_position]}") if @logger_info.include?(:ship_position) and $GAME_INFO[:ship_position]
     $LOGGER.info("ship bank = #{$GAME_INFO[:ship_bank]}") if @logger_info.include?(:ship_bank) and $GAME_INFO[:ship_bank]
     $LOGGER.info("star eaten id = #{$GAME_INFO[:star_eaten]}") if @logger_info.include?(:star_eaten) and $GAME_INFO[:star_eaten]
     $LOGGER.info("star reward = #{$GAME_INFO[:star_reward]}") if @logger_info.include?(:star_reward) and $GAME_INFO[:star_reward]
-    $LOGGER.info("star info = #{$GAME_INFO[:star_info_hash]}") if @logger_info.include?(:star_info_hash) and $GAME_INFO[:star_info_hash]
 
 
     # reset all GAME INFO to nil so old info doesn't stick around for next tick
