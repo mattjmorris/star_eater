@@ -17,7 +17,6 @@ class Game
     @star_collection = StarFactory.get_simple_star_collection(@environment)
     @ship = initialize_ship()
 
-    #@star_collection.stars.each{|star| @environment.add_star(star)}
     @environment.add_star_collection(@star_collection)
     @environment.add_ship(@ship)
 

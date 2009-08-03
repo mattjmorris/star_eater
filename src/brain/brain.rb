@@ -10,9 +10,9 @@ class Brain
     mtcs.weight = 2
     @policy.add_action(mtcs)
 
-    dn = DoNothing.new
-    dn.weight = 1
-    @policy.add_action(dn)
+    #dn = DoNothing.new
+    #dn.weight = 1
+    #@policy.add_action(dn)
     
   end
 
