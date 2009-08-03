@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + "/move_towards_closest_star"
-require File.dirname(__FILE__) + "/move_away_closest_star"
-require File.dirname(__FILE__) + "/do_nothing"
+require File.dirname(__FILE__) + "/actions/move_towards_closest_star"
+require File.dirname(__FILE__) + "/actions/move_away_closest_star"
+require File.dirname(__FILE__) + "/actions/do_nothing"
 
 class Policy
 

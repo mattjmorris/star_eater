@@ -1,5 +1,5 @@
 require "spec"
-require File.dirname(__FILE__) + "/../../src/policy/action"
+require File.dirname(__FILE__) + "/../../src/brains/policy_based/actions/action"
 
 describe Action do
 

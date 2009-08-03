@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/action"
-require File.dirname(__FILE__) + "/../physics/velocity"
-require File.dirname(__FILE__) + "/../physics/position"
+require File.dirname(__FILE__) + "/../../../physics/velocity"
+require File.dirname(__FILE__) + "/../../../physics/position"
 
 class MoveTowardsClosestStar
   include Action

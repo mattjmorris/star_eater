@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/../physics/velocity"
+require File.dirname(__FILE__) + "/../../../../src/physics/velocity"
 
 module Action
 

@@ -1,5 +1,5 @@
-require File.dirname(__FILE__) + "/../../src/policy/move_towards_closest_star"
-require File.dirname(__FILE__) + "/../brains/brain"
+#require File.dirname(__FILE__) + "/../../src/brains/policy_based/actions/move_towards_closest_star"
+require File.dirname(__FILE__) + "/../brains/policy_based/brain"
 
 class Ship
 

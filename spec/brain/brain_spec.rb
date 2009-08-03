@@ -2,7 +2,7 @@ require "spec"
 require File.dirname(__FILE__) + "/../../src/components/ship"
 require File.dirname(__FILE__) + "/../../src/physics/position"
 require File.dirname(__FILE__) + "/../../src/physics/velocity"
-require File.dirname(__FILE__) + "/../../src/brains/brain"
+require File.dirname(__FILE__) + "/../../src/brains/policy_based/brain"
 require File.dirname(__FILE__) + "/../../src/components/environment"
 
 

@@ -4,9 +4,9 @@ require File.dirname(__FILE__) + "/physics/vector"
 require File.dirname(__FILE__) + "/components/environment"
 require File.dirname(__FILE__) + "/star_factory"
 require File.dirname(__FILE__) + "/components/ship"
-require File.dirname(__FILE__) + "/policy/policy"
-require File.dirname(__FILE__) + "/brains/brain"
-require File.dirname(__FILE__) + "/brains/simple_brain"
+require File.dirname(__FILE__) + "/brains/policy_based/policy"
+require File.dirname(__FILE__) + "/brains/policy_based/brain"
+require File.dirname(__FILE__) + "/brains/policy_based/simple_brain"
 
 class Game
 

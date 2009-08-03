@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/../policy/policy"
+require File.dirname(__FILE__) + "/policy"
 
 class Brain
 
