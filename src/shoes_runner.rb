@@ -7,7 +7,9 @@ SIZE_Y = 600
 Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
   stroke rgb(0x30, 0x30, 0x05, 0.5)
 
-  game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS)
+  brain_to_run = :ReinforcementBrain
+
+  game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS, :brain => brain_to_run)
 
   animate(30) do
     clear do
