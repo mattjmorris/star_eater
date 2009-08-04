@@ -5,20 +5,19 @@ class ReinforcementBrain
   def initialize
 
     @policy = Policy.new
+    @policy.add_action(DoNothing.new)
+    @policy.add_action(MoveTowardsClosestStar.new)
+    @policy.add_action(MoveAwayClosestStar.new)
 
-    mtcs = MoveTowardsClosestStar.new
-    mtcs.weight = 2
-    @policy.add_action(mtcs)
-
-    #dn = DoNothing.new
-    #dn.weight = 1
-    #@policy.add_action(dn)
-    
   end
 
   def next_velocity(ship)
     velocity = @policy.calc_velocity(ship)
     velocity
+  end
+
+  def deliver_reward(reward)
+    @policy.deliver_reward(reward)
   end
   
 end

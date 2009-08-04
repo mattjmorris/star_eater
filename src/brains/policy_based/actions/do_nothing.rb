@@ -10,8 +10,7 @@ class DoNothing
 
   def calc_velocity(ship)
 
-    @info = "#{self.class} has set velocity to zero."
-    announce_info if $D
+    $GAME_INFO[:action_info] = "#{self.class} has has set velocity to zero."
 
     @velocity = Velocity.new_with_xy(0,0)
 

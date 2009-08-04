@@ -11,10 +11,10 @@ class NonGuiRunner
             #:ship_position,
             #:ship_velocity,
             #:ship_bank,
-            #:star_eaten,
-            #:star_reward,
+            :star_eaten,
+            :star_reward,
             #:star_info_hash,
-            #:action_info
+            :action_info
     ]
     $LOGGER = Logging.logger(STDOUT, :pattern => "%m\n", :date_pattern => "")
     $LOGGER.level = :debug
@@ -22,14 +22,14 @@ class NonGuiRunner
 
   def run_game
 
-    brains = [:ReinforcementBrain, :SimpleBrain]
+    brains = [:ReinforcementBrain]
 
     brains.each do |brain|
 
       @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain => brain)
       @tick_count = 0
 
-      100.times do
+      200.times do
         @tick_count += 1
         @game.tick
         show_log_info

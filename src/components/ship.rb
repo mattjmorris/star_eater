@@ -45,6 +45,7 @@ class Ship
   def deliver_reward(reward, star_id)
     @bank += reward
     $GAME_INFO[:ship_bank] = @bank
+    @brain.deliver_reward(reward)
   end
   
 end
