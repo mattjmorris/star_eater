@@ -25,7 +25,8 @@ class Policy
     return velocity
   end
 
-  def deliver_reward
+  #TODO - right now not taking into account amount of reward (or even if it is negative)
+  def deliver_reward(reward)
     @weighted_actions[@last_action] += 0.1
     p @weighted_actions
   end
