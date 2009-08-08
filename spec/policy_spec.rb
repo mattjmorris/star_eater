@@ -1,5 +1,5 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/brains/policy_based/policy"
+require File.dirname(__FILE__) + "/../src/brains/policy_based/policies/policy"
 require File.dirname(__FILE__) + "/../src/brains/policy_based/actions/action"
 require File.dirname(__FILE__) + "/../src/components/ship"
 

@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + "/actions/move_towards_closest_star"
-require File.dirname(__FILE__) + "/actions/move_away_closest_star"
-require File.dirname(__FILE__) + "/actions/do_nothing"
+require File.dirname(__FILE__) + "/../actions/move_towards_closest_star"
+require File.dirname(__FILE__) + "/../actions/move_away_closest_star"
+require File.dirname(__FILE__) + "/../actions/do_nothing"
 
 class Policy
 
@@ -60,26 +60,5 @@ class Policy
     random_action.calc_velocity(ship)
   end
 
-  #def get_velocity_from_top_actions(ship)
-  #  top_actions = get_top_n_actions
-  #  top_actions.each { |a| a.calc_velocity(ship) }
-  #  weighted_summed_velocity = get_weighted_summed_velocity(top_actions)
-  #
-  #  return weighted_summed_velocity
-  #end
-  #
-  ## Returns an array of the top n actions by weight
-  #def get_top_n_actions
-  #  @actions.sort!{|a,b| b.weight<=>a.weight}
-  #  @actions[0, @num_top_actions_to_select]
-  #end
-  #
-  #def get_weighted_summed_velocity(top_actions)
-  #  summed_velocity = Velocity.new_with_xy(0, 0)
-  #  top_actions.each { |a| summed_velocity += (a.velocity * a.weight)}
-  #  # now normalize the velocity
-  #  summed_weights = top_actions.inject(0) { |sum, action| sum + action.weight }
-  #  return summed_velocity / summed_weights
-  #end
 
 end
