@@ -7,9 +7,9 @@ SIZE_Y = 600
 Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
   stroke rgb(0x30, 0x30, 0x05, 0.5)
 
-  brain_to_run = :ReinforcementBrain
+  brain_type = :reinforcement
 
-  game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS, :brain => brain_to_run)
+  game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS, :brain => brain_type)
 
   animate(30) do
     clear do
@@ -17,18 +17,18 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
 
       game.tick
 
-      draw_ship(game.ship)
-      draw_stars(game.star_collection.stars)
+      draw_ship(game.environment.ship_position, game.ship.diameter)
+      draw_stars(game.environment.star_collection.stars)
 
       draw_info
 
     end
   end
 
-  def draw_ship(ship)
+  def draw_ship(ship_position, ship_diameter)
     fill rgb(0x30, 0xFF, 0xFF, 0.5)
-    oval :left => ship.position.x, :top => ship.position.y, :width => ship.diameter, :center => true
-    line ship.position.x, ship.position.y, (ship.position.x + ship.velocity.x), (ship.position.y + ship.velocity.y)
+    oval :left => ship_position.x, :top => ship_position.y, :width => ship_diameter, :center => true
+    #line ship_position.x, ship_position.y, (ship_position.x + ship.velocity.x), (ship_position.y + ship.velocity.y)
   end
 
   def draw_stars(stars)
