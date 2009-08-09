@@ -16,6 +16,7 @@ class ReinforcementBrain
   def set_data(environment_data, tick_count)
     # (MJM) - note that right now tick_count is ignored.  In future pass to environment model.
     @environment_data = environment_data
+    deliver_reward(@environment_data[:reward], @environment_data[:star_id_delivering_reward])
   end
 
   def next_velocity
@@ -23,8 +24,10 @@ class ReinforcementBrain
     return velocity
   end
 
-  def deliver_reward(reward)
-    @policy.deliver_reward(reward)
+  private
+
+  def deliver_reward(reward, star_id)
+    @policy.deliver_reward(reward, star_id)
   end
   
 end

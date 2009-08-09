@@ -21,27 +21,8 @@ class Ship
 
     $GAME_INFO[:ship_velocity] = velocity
 
-    #@position = @position.move(velocity)
-
-    #$GAME_INFO[:ship_position] = @position
-
     return velocity
 
   end
-
-  # should use the environment to determine what stars are out there.  The environment can make this information fuzzier
-  # in the future, which would force more work here.
-  #def star_position_hash()
-  #  stars = @environment.data[:stars]
-  #  positions = {}
-  #  stars.each_with_index{|star, idx| positions.merge!({idx => star.position}) }
-  #  positions
-  #end
-  #
-  #def deliver_reward(reward, star_id)
-  #  @bank += reward
-  #  $GAME_INFO[:ship_bank] = @bank
-  #  @brain.deliver_reward(reward)
-  #end
   
 end

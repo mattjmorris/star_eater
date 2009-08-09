@@ -1,23 +1,32 @@
 class Environment
 
-  attr_accessor :width, :height, :ship_position, :star_collection
+  attr_accessor :width, :height, :ship_position, :star_collection, :reward, :star_id_delivering_reward, :bank
 
+  def initialize
+    @reward = 0
+    @bank = 0
+  end
 
   def tick(ship_velocity, tick_count)
     # update ship's position
-    @ship_position = @ship_position.move(ship_velocity)
-puts
-puts "the ship position is #{@ship_position}"
-puts  
+    @ship_position = @ship_position.move(ship_velocity) 
     $GAME_INFO[:ship_position] = @position
-    # see if ship connected with any stars, and if so, record any rewards
 
+    # tick the star collection and record any rewards
+    @reward = 0
+    @star_id_delivering_reward = nil
+    @reward, @star_id_delivering_reward = @star_collection.tick(ship_position)
+    @bank += reward
 
   end
 
   # Can obfuscate as much as we like
   def data
-    {:star_position_hash => position_hash(@star_collection.stars), :ship_position => @ship_position}
+    {:star_position_hash => position_hash(@star_collection.stars),
+     :ship_position => @ship_position,
+     :reward => @reward,
+     :star_id_delivering_reward => @star_id_delivering_reward
+    }
   end
 
   private

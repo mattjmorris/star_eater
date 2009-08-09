@@ -12,7 +12,7 @@ class BrainFactory
     brain = ReinforcementBrain.new
     policy = ProgressiveExploiter.new
     # TODO (MJM) create actions for moving towards a specific star and add them here
-    policy.create_actions([:MoveTowardsClosestStar])
+    policy.create_actions([:MoveTowardsClosestStar, :DoNothing])
     brain.set_policy(policy)
     return brain
   end
