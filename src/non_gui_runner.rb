@@ -8,7 +8,7 @@ class NonGuiRunner
     @logger_info =
     [
             #:tick_count,
-            #:ship_position,
+            :ship_position,
             #:ship_velocity,
             #:ship_bank,
             :star_eaten,
