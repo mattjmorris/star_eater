@@ -36,7 +36,7 @@ class NonGuiRunner
       end
       
       puts "*" * 50
-      puts "Brain type #{brain_type.to_s} accumulated #{@game.ship.bank} points"
+      puts "Brain type #{brain_type.to_s} accumulated #{@game.environment.bank} points"
       puts "*" * 50
     end 
   end
