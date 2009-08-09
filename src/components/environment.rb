@@ -6,6 +6,9 @@ class Environment
   def tick(ship_velocity, tick_count)
     # update ship's position
     @ship_position = @ship_position.move(ship_velocity)
+puts
+puts "the ship position is #{@ship_position}"
+puts  
     $GAME_INFO[:ship_position] = @position
     # see if ship connected with any stars, and if so, record any rewards
 
