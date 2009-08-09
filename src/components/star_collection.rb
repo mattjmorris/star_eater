@@ -30,12 +30,4 @@ class StarCollection
 
   end
 
-  ## A hash of ids and positions of currently visible stars.  Intended to allow ships to see only 'non-sensitive'
-  ## information about the stars, so that they don't have access to a star's parameters.
-  #def position_hash
-  #  position_hash = {}
-  #  @stars.each { |star| position_hash[star.id] = star.position if star.visible}
-  #  return position_hash
-  #end
-
 end

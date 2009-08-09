@@ -1,12 +1,4 @@
-require File.dirname(__FILE__) + "/physics/position"
-require File.dirname(__FILE__) + "/physics/velocity"
-require File.dirname(__FILE__) + "/physics/vector"
-require File.dirname(__FILE__) + "/components/environment"
-#require File.dirname(__FILE__) + "/star_factory"
 require File.dirname(__FILE__) + "/components/ship"
-require File.dirname(__FILE__) + "/brains/policy_based/policies/progressive_exploiter"
-require File.dirname(__FILE__) + "/brains/policy_based/reinforcement_brain"
-require File.dirname(__FILE__) + "/brains/policy_based/simple_brain"
 require File.dirname(__FILE__) + "/components/environment_factory"
 require File.dirname(__FILE__) + "/brains/brain_factory"
 

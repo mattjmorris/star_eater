@@ -1,6 +1,3 @@
-#require File.dirname(__FILE__) + "/../../src/brains/policy_based/actions/move_towards_closest_star"
-require File.dirname(__FILE__) + "/../brains/policy_based/reinforcement_brain"
-
 class Ship
 
   MAX_SPEED = 20
@@ -34,17 +31,17 @@ class Ship
 
   # should use the environment to determine what stars are out there.  The environment can make this information fuzzier
   # in the future, which would force more work here.
-  def star_position_hash()
-    stars = @environment.data[:stars]
-    positions = {}
-    stars.each_with_index{|star, idx| positions.merge!({idx => star.position}) }
-    positions
-  end
-
-  def deliver_reward(reward, star_id)
-    @bank += reward
-    $GAME_INFO[:ship_bank] = @bank
-    @brain.deliver_reward(reward)
-  end
+  #def star_position_hash()
+  #  stars = @environment.data[:stars]
+  #  positions = {}
+  #  stars.each_with_index{|star, idx| positions.merge!({idx => star.position}) }
+  #  positions
+  #end
+  #
+  #def deliver_reward(reward, star_id)
+  #  @bank += reward
+  #  $GAME_INFO[:ship_bank] = @bank
+  #  @brain.deliver_reward(reward)
+  #end
   
 end
