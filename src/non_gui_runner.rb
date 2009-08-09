@@ -22,11 +22,11 @@ class NonGuiRunner
 
   def run_game
 
-    brains = [:ReinforcementBrain]
+    brains = [:reinforcement]
 
-    brains.each do |brain|
+    brains.each do |brain_type|
 
-      @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain => brain)
+      @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain_type => brain_type)
       @tick_count = 0
 
       200.times do
@@ -36,7 +36,7 @@ class NonGuiRunner
       end
       
       puts "*" * 50
-      puts "Brain #{brain.to_s} accumulated #{@game.ship.bank} points"
+      puts "Brain type #{brain_type.to_s} accumulated #{@game.ship.bank} points"
       puts "*" * 50
     end 
   end
