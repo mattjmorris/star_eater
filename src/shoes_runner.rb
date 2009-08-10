@@ -8,8 +8,9 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
   stroke rgb(0x30, 0x30, 0x05, 0.5)
 
   brain_type = :reinforcement
+  star_collection_type = :progressive
 
-  game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS, :brain => brain_type)
+  game = Game.new(:size_x => SIZE_X, :size_y => SIZE_Y, :num_stars => NUM_STARS, :brain_type => brain_type, :star_collection_type => star_collection_type)
 
   animate(30) do
     clear do
@@ -19,7 +20,6 @@ Shoes.app(:title => "Star Hunter", :height => SIZE_Y, :width => SIZE_X) do
 
       draw_ship(game.environment.ship_position, game.ship.diameter)
       draw_stars(game.environment.star_collection.stars)
-
       draw_info
 
     end

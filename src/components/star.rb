@@ -8,7 +8,7 @@ class Star
   attr_reader :position, :id
   attr_writer :reward_function
 
-  def initialize (params = {:max_x => 600, :max_y => 800})
+  def initialize (params = {:max_x => 800, :max_y => 600})
 
     assign_id(id)
     

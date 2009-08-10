@@ -11,15 +11,15 @@ class EnvironmentFactory
 
     environment = Environment.new
 
-    width = params[:width] || 600
-    height = params[:height] || 800
+    width = params[:width] || 800
+    height = params[:height] || 600
     environment.width = width
     environment.height = height
     environment.ship_position = Position.new(width/2, height/2)
 
     num_stars = params[:num_stars] || 1
     star_collection_type = params[:star_collection_type] || :simple
-    environment.star_collection = StarFactory.get_star_collection(star_collection_type, num_stars, width, height)
+    environment.star_collection = StarFactory.create_star_collection(star_collection_type, num_stars, width, height)
 
     return environment
 
