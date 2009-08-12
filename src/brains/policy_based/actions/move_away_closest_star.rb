@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/action"
-require File.dirname(__FILE__) + "/../physics/velocity"
-require File.dirname(__FILE__) + "/../physics/position"
+require File.dirname(__FILE__) + "/../../../../src/physics/velocity"
+require File.dirname(__FILE__) + "/../../../../src/physics/position"
 
 class MoveAwayClosestStar
   include Action
@@ -18,13 +18,11 @@ class MoveAwayClosestStar
     # if there is a closest start, move away from it, otherwise sit still and wait.
     if closest_star_position
       @velocity = Velocity.new_with_xy(0,0) - Velocity.new(ship.position.get_vector_to(closest_star_position))
-      @info = "Action #{self.class} has found closest star to be star id #{closest_star_id} and has set velocity #{velocity} to move away from it, with a weight of #{@weight}"
+      $GAME_INFO[:action_info] = "#{self.class} has found closest star to be star id #{closest_star_id} and has set velocity #{velocity} to move away from it, with a weight of #{@weight}"
     else
       @velocity = Velocity.new_with_xy(0, 0)
-      @info = "Action #{self.class} has not found a closest star and has set velocity #{velocity}, with a weight of #{@weight}"
+      $GAME_INFO[:action_info] = "#{self.class} has not found a closest star and has set velocity #{velocity}, with a weight of #{@weight}"
     end
-
-    announce_info if $D
 
     return @velocity
 

@@ -1,6 +1,6 @@
 require "spec"
-require File.dirname(__FILE__) + "/../src/policy/policy"
-require File.dirname(__FILE__) + "/../src/policy/action"
+require File.dirname(__FILE__) + "/../src/brains/policy_based/policies/policy"
+require File.dirname(__FILE__) + "/../src/brains/policy_based/actions/action"
 require File.dirname(__FILE__) + "/../src/components/ship"
 
 describe Policy do
@@ -44,8 +44,8 @@ describe Policy do
   end
 
   def static_ship
-    ship = Ship.new(Position.new(50,50), Velocity.new_with_xy(0, 0))
-    ship.star_position_hash = {1 => Position.new(100,100), 2 => Position.new(500,100)}
+    ship = mock(Ship)
+    ship.stub!(:star_position_hash).and_return({1 => Position.new(100,100), 2 => Position.new(500,100)})
     return ship
   end
 
