@@ -22,7 +22,7 @@ class NonGuiRunner
   def run_game
 
     #brain_types = [:decisiontree, :reinforcement]
-    brain_types = [:decisiontree]
+    brain_types = [:decisiontree, :reinforcement]
     star_collection_types = [:progressive]
 
     brain_types.each do |brain_type|
@@ -35,7 +35,7 @@ class NonGuiRunner
         1000.times do
           @tick_count += 1
           @game.tick
-          show_log_info
+          #show_log_info
         end
 
         puts "*" * 50
