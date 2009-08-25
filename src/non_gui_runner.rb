@@ -22,7 +22,7 @@ class NonGuiRunner
   def run_game
 
     #brain_types = [:decisiontree, :reinforcement]
-    brain_types = [:decisiontree, :reinforcement]
+    brain_types = [:reinforcement]
     star_collection_types = [:progressive]
 
     brain_types.each do |brain_type|

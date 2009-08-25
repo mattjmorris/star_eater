@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + "/policy_based/policies/progressive_exploiter"
+require File.dirname(__FILE__) + "/policy_based/policies/explore_exploit_policy"
 require File.dirname(__FILE__) + "/policy_based/reinforcement_brain"
 require File.dirname(__FILE__) + "/decision_tree_brain"
 
@@ -13,9 +14,7 @@ class BrainFactory
 
   def self.reinforcement
     brain = ReinforcementBrain.new
-    policy = ProgressiveExploiter.new
-    # TODO (MJM) create actions for moving towards a specific star and add them here
-    policy.create_actions([:MoveTowardsClosestStar, :DoNothing])
+    policy = ExploreExploitPolicy.new
     brain.set_policy(policy)
     return brain
   end
@@ -24,4 +23,6 @@ class BrainFactory
     brain = DecisionTreeBrain.new
     return brain
   end
+
+  
 end
