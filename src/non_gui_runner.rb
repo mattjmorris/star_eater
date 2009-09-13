@@ -21,30 +21,43 @@ class NonGuiRunner
 
   def run_game
 
-    #brain_types = [:decisiontree, :reinforcement]
-    brain_types = [:static_action_closest_star, :reinforcement]
+    collected_values = []
+    episode_length = 10000
+    num_episodes = 10
+
+    #brain_types = [:decisiontree, :reinforcement, :static_action_closest_star]
+    brain_types = [:reinforcement]
     star_collection_types = [:progressive]
 
     brain_types.each do |brain_type|
 
       star_collection_types.each do |star_collection_type|
 
-        @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain_type => brain_type, :star_collection_type => star_collection_type)
-        @tick_count = 0
+        num_episodes.times do
 
-        100.times do
-          @tick_count += 1
-          @game.tick
-          #show_log_info
+          @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain_type => brain_type, :star_collection_type => star_collection_type)
+          @tick_count = 0
+
+          episode_length.times do
+            @tick_count += 1
+            @game.tick
+            #show_log_info
+          end
+
+          puts "Brain type #{brain_type.to_s} accumulated #{@game.environment.bank} points when running with star collection type #{star_collection_type}"
+
+          collected_values << @game.environment.bank
+          @game.environment.bank = 0
+          
         end
 
-        puts "*" * 50
-        puts "Brain type #{brain_type.to_s} accumulated #{@game.environment.bank} points when running with star collection type #{star_collection_type}"
-        puts "*" * 50
-
       end
+
+      sum = collected_values.inject{|a,b| a+b}
+      puts "Brain type #{brain_type.to_s} had a total acheived = #{sum} for an average of #{sum / num_episodes}"
         
-    end 
+    end
+
   end
 
   private

@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + "/policy_based/policies/progressive_exploiter"
-require File.dirname(__FILE__) + "/policy_based/policies/explore_exploit_policy"
+require File.dirname(__FILE__) + "/policy_based/policies/simple_action_selection"
 require File.dirname(__FILE__) + "/policy_based/actions/move_towards_closest_star"
 require File.dirname(__FILE__) + "/policy_based/reinforcement_brain"
 require File.dirname(__FILE__) + "/decision_tree_brain"
@@ -16,7 +16,7 @@ class BrainFactory
 
   def self.reinforcement
     brain = ReinforcementBrain.new
-    policy = ExploreExploitPolicy.new
+    policy = SimpleActionSelection.new
     brain.set_policy(policy)
     return brain
   end

@@ -44,7 +44,8 @@ class Star
 
   def hyperspace
     set_new_random_position
-    switch_visibility(:visible => false)
+    #switch_visibility(:visible => false) # MJM - making a change here to not go invisible when hyperspacing
+    reset_visiblility_counters
   end
 
   def get_reward
