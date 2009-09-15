@@ -13,6 +13,9 @@ class Ship
 
   def tick(environment_data, tick_count)
 
+    # add MAX_SPEED to environment_data
+    environment_data[:ship_max_speed] = MAX_SPEED
+
     @brain.set_data(environment_data, tick_count)
 
     velocity = @brain.next_velocity
