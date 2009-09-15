@@ -2,9 +2,10 @@ class Environment
 
   attr_accessor :width, :height, :ship_position, :star_collection, :reward, :star_id_delivering_reward, :bank
 
-  def initialize
+  def initialize(recorder)
     @reward = 0
     @bank = 0
+    @recorder = recorder
   end
 
   def tick(ship_velocity, tick_count)
@@ -16,13 +17,14 @@ class Environment
     @reward = 0
     @star_id_delivering_reward = nil
     @reward, @star_id_delivering_reward = @star_collection.tick(ship_position)
-    @bank += reward
-
+    @bank += @reward
+    @recorder.add(@reward, @star_id_delivering_reward)
   end
 
   # Can obfuscate as much as we like
   def data
-    {:star_position_hash => position_hash(@star_collection.stars),
+    {
+     :star_position_hash => position_hash(@star_collection.stars),
      :ship_position => @ship_position,
      :reward => @reward,
      :star_id_delivering_reward => @star_id_delivering_reward

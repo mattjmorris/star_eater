@@ -1,4 +1,4 @@
-#require "ai4r"
+require "ai4r"
 require File.dirname(__FILE__) + "/brain_utility_methods"
 
 #

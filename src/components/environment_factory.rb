@@ -9,7 +9,7 @@ class EnvironmentFactory
 
   def self.create_environment(params = {})
 
-    environment = Environment.new
+    environment = Environment.new(params[:recorder])
 
     width = params[:width] || 800
     height = params[:height] || 600

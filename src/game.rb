@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + "/components/ship"
 require File.dirname(__FILE__) + "/components/environment_factory"
 require File.dirname(__FILE__) + "/brains/brain_factory"
+require File.dirname(__FILE__) + "/components/recorder"
 
 class Game
 

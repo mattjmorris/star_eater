@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + "/policy_based/policies/explore_exploit_policy"
 require File.dirname(__FILE__) + "/policy_based/actions/move_towards_closest_star"
 require File.dirname(__FILE__) + "/policy_based/reinforcement_brain"
 require File.dirname(__FILE__) + "/decision_tree_brain"
+require File.dirname(__FILE__) + "/random_selector_brain"
 require File.dirname(__FILE__) + "/static_action_brain"
 
 # This is the place to set up your brain and inject any objects it needs (such as an instance of a particular policy
@@ -23,6 +24,11 @@ class BrainFactory
 
   def self.decisiontree
     brain = DecisionTreeBrain.new
+    return brain
+  end
+
+  def self.random_selector
+    brain = RandomSelectorBrain.new
     return brain
   end
 
