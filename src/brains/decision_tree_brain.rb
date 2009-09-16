@@ -12,7 +12,7 @@ class DecisionTreeBrain
   DATA_FILE = "decision_tree_training_data.csv"
 
   def initialize
-    @data_labels = ["ID", "Grouping", "Worthwhile?"]
+    @data_labels = ["ID", "Grouping", "Near Neighbors", "Worthwhile?"]
     @training_mode = false
     @target = {}
     write_labels_to_csv_file(DATA_FILE, @data_labels) if @training_mode
@@ -31,7 +31,11 @@ class DecisionTreeBrain
 
   def distance_grouping(distance)
     (distance > 400 ? "> 400" : (distance >= 200) ? "200-400" : "< 200")
-  end  
+  end
+  
+  def near_neighbor?
+    (@data[:star_position_hash].reject{|id,pos| pos == @ship_position}.select{|id,pos| star_dist(pos) < 200}.length > 0) ? "Yes" : "No"
+  end
   
   def analyze_new_environment_data
     @ship_position = @data[:ship_position]
@@ -50,7 +54,7 @@ class DecisionTreeBrain
 
   def get_decision_tree_next_star
     @id3 ||= build_id3
-    id3_worthy_targets = @data[:star_position_hash].select{|id,position| @id3.eval([id.to_s, distance_grouping(star_dist(position))]) }
+    id3_worthy_targets = @data[:star_position_hash].select{|id,position| @id3.eval([id.to_s, distance_grouping(star_dist(position)), near_neighbor?]) == "Yes" }
     id3_worthy_targets.empty? ? nearest_star(@data[:star_position_hash]) : nearest_star(id3_worthy_targets)
   end
 
@@ -61,8 +65,9 @@ class DecisionTreeBrain
 
   def get_training_data_result
     group = distance_grouping(@target[:initial_distance])
+    neighbor = near_neighbor?
     training_worth_estimate = (@data[:reward]/@target[:initial_distance] > 0.016) ? "Yes" : "No"
-    result = [@target[:id], group, training_worth_estimate]
+    result = [@target[:id], group, neighbor, training_worth_estimate]
   end
 
   def build_id3

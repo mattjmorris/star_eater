@@ -1,0 +1,11 @@
+if    ID=='0' then Worthwhile? = 'No'
+
+elsif ID=='1' and Grouping == '  < 200' then Worthwhile? = 'Yes'
+elsif ID=='1' and Grouping == '200-400' and Near Neighbors == 'Yes' then Worthwhile? = 'Yes'
+elsif ID=='1' and Grouping == '200-400' and Near Neighbors == 'No'  then Worthwhile? = 'No'
+elsif ID=='1' and Grouping == '  > 400' then Worthwhile? = 'No'
+
+elsif ID=='2' then Worthwhile? = 'Yes'
+
+else 
+  raise 'There was not enough information during training to do a proper induction for this data element' 

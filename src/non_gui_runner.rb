@@ -22,10 +22,10 @@ class NonGuiRunner
   def run_game
 
     collected_values = []
-    episode_length = 10000
+    episode_length = 1000
     num_episodes = 10
 
-    #brain_types = [:decisiontree, :reinforcement, :static_action_closest_star]
+    #brain_types = [:random_selector, :decisiontree, :reinforcement, :static_action_closest_star]
     brain_types = [:reinforcement]
     star_collection_types = [:progressive]
 
@@ -33,10 +33,11 @@ class NonGuiRunner
       recorder = Recorder.new(brain_type)
 
       star_collection_types.each do |star_collection_type|
+        recorder = Recorder.new("#{brain_type}_#{star_collection_type}")
 
-        num_episodes.times do
+#        num_episodes.times do
 
-          @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain_type => brain_type, :star_collection_type => star_collection_type)
+          @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain_type => brain_type, :star_collection_type => star_collection_type, :recorder => recorder)
           @tick_count = 0
 
           episode_length.times do
@@ -50,7 +51,9 @@ class NonGuiRunner
           collected_values << @game.environment.bank
           @game.environment.bank = 0
           
-        end
+#        end
+        
+        recorder.write
 
       end
 
