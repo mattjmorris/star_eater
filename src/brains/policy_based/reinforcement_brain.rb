@@ -10,11 +10,10 @@ class ReinforcementBrain
   end
 
   def set_data(environment_data, tick_count)
-    # (MJM) - note that right now tick_count is ignored.  In future pass to environment model.
     @environment_data = environment_data
     if @environment_data[:star_id_delivering_reward]
       @policy.deliver_reward(@environment_data)
-      @policy.update_target(@environment_data)
+      @policy.update_target(@environment_data, tick_count)
     end
 
   end

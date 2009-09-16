@@ -29,7 +29,25 @@ class StarFactory
       star.visible_limit = 99999999
       star.invisible_limit = 0
       star.reward_function = lambda{idx * 5}
-      star.reward_function_description = "FR1: #{idx * 5}"
+      star.reward_function_description = "Fixed: #{idx * 5}"
+      star_collection << star
+    end
+    return star_collection
+  end
+
+  def self.progressive_variable(num_stars, width, height)
+    star_collection = StarCollection.new
+    num_stars.times do |idx|
+      star = Star.new(:max_x => width, :max_y => height)
+      star.visible_limit = 99999999
+      star.invisible_limit = 0
+      star.reward_function = lambda do
+        mid = idx * 5
+        low = mid - 4
+        high = mid + 4
+        rand(high - low + 1) + low
+      end
+      star.reward_function_description = "Variable: #{idx * 5}"
       star_collection << star
     end
     return star_collection

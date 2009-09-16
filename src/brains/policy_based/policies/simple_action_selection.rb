@@ -14,6 +14,9 @@ class SimpleActionSelection
     @current_strategy = :explore
     @incorporate_distance = true
     @max_num_stars_seen = 0
+    # useful when reward values are static TODO - change to be set by GA?
+    @do_one_time_sampling = false
+    @exploration_threshold = 0.1
   end
 
   def calc_velocity(environment_data)
@@ -31,16 +34,28 @@ class SimpleActionSelection
     @estimated_star_values[star_id] = @estimated_star_values[star_id] + (1.0/@star_eat_count[star_id]) * (reward - @estimated_star_values[star_id])
   end
 
-  def update_target(environment_data)
-    update_explore_exploit_strategy
+  def update_target(environment_data, tick_count)
+    update_explore_exploit_strategy(environment_data, tick_count)
     @id_of_selected_star_to_eat = @current_strategy == :explore ? exploration_star_id(environment_data) : exploitation_star_id(environment_data)
   end
 
   private
 
   # For now, very simply explore until we have sampled all of the stars, then start exploiting.
-  def update_explore_exploit_strategy
-    if @current_strategy == :explore 
+  def update_explore_exploit_strategy(environment_data, tick_count)
+    if @do_one_time_sampling
+      exploit_if_all_stars_sampled
+    # TODO: change these to values created by a GA
+    # only explore up to a certain point in the episode, then purely exploit
+    elsif environment_data[:episode_length].to_f / tick_count < 0.3
+      @current_strategy = :explore if rand < @exploration_threshold
+    else
+      @current_strategy = :exploit
+    end
+  end
+
+  def exploit_if_all_stars_sampled
+    if @current_strategy == :explore
       @current_strategy = :exploit if @estimated_star_values.size >= @max_num_stars_seen
     end
   end
@@ -78,8 +93,6 @@ class SimpleActionSelection
     end
   end
 
-  # TODO: right now randomly selecting a star to move towards.  Should use a better exploration strategy based on amount
-  # of data and closeness of stars.
   def exploration_star_id(environment_data)
     # ids of all stars - id of highest valued star
     non_highest_valued_star_ids = environment_data[:star_position_hash].keys - [id_of_highest_valued_star]

@@ -15,6 +15,7 @@ class EnvironmentFactory
     height = params[:height] || 600
     environment.width = width
     environment.height = height
+    environment.episode_length = params[:episode_length]
     environment.ship_position = Position.new(width/2, height/2)
 
     num_stars = params[:num_stars] || 1

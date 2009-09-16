@@ -1,6 +1,6 @@
 class Environment
 
-  attr_accessor :width, :height, :ship_position, :star_collection, :reward, :star_id_delivering_reward, :bank
+  attr_accessor :width, :height, :ship_position, :star_collection, :reward, :star_id_delivering_reward, :bank, :episode_length
 
   def initialize(recorder)
     @reward = 0
