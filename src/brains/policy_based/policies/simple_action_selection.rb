@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + "/../../../../src/util/extend_array"
 # in the decision about which star to go to (star_value/distance = action value).
 class SimpleActionSelection
 
-  attr_accessor :estimated_star_values, :current_strategy, :incorporate_distance
+  attr_accessor :estimated_star_values, :current_strategy, :incorporate_distance, :exploration_threshold
 
   def initialize
     @move_towards_specified_star = MoveTowardsSpecifiedStar.new

@@ -22,12 +22,12 @@ class NonGuiRunner
   def run_game
 
     collected_values = []
-    episode_length = 1000
+    episode_length = 10000
     num_episodes = 1
 
     #brain_types = [:random_selector, :decisiontree, :reinforcement, :static_action_closest_star]
-    brain_types = [:reinforcement]
-    star_collection_types = [:progressive_variable]
+    brain_types = [:reinforcement, :genetic_algorithm]
+    star_collection_types = [:progressive]
 
     brain_types.each do |brain_type|
       recorder = Recorder.new(brain_type)
@@ -35,7 +35,7 @@ class NonGuiRunner
       star_collection_types.each do |star_collection_type|
         recorder = Recorder.new("#{brain_type}_#{star_collection_type}")
 
-#        num_episodes.times do
+        num_episodes.times do
 
           @game = Game.new(:size_x => 800, :size_y => 600, :num_stars => 3, :brain_type => brain_type, :star_collection_type => star_collection_type, :recorder => recorder, :episode_length => episode_length)
           @tick_count = 0
@@ -51,14 +51,14 @@ class NonGuiRunner
           collected_values << @game.environment.bank
           @game.environment.bank = 0
           
-#        end
+        end
         
-        recorder.write
+        #recorder.write
 
       end
 
       sum = collected_values.inject{|a,b| a+b}
-      puts "Brain type #{brain_type.to_s} had a total acheived = #{sum} for an average of #{sum / num_episodes}"
+      #puts "Brain type #{brain_type.to_s} had a total acheived = #{sum} for an average of #{sum / num_episodes}"
         
     end
 

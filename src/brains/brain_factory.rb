@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + "/policy_based/policies/progressive_exploiter"
 require File.dirname(__FILE__) + "/policy_based/policies/simple_action_selection"
 require File.dirname(__FILE__) + "/policy_based/actions/move_towards_closest_star"
 require File.dirname(__FILE__) + "/policy_based/reinforcement_brain"
+require File.dirname(__FILE__) + "/policy_based/genetic_algorithm_brain"
 require File.dirname(__FILE__) + "/decision_tree_brain"
 require File.dirname(__FILE__) + "/random_selector_brain"
 require File.dirname(__FILE__) + "/static_action_brain"
@@ -22,6 +23,13 @@ class BrainFactory
     return brain
   end
 
+  def self.genetic_algorithm
+    brain = GeneticAlgorithmBrain.new
+    policy = SimpleActionSelection.new
+    brain.set_policy(policy)
+    return brain
+  end
+
   def self.decisiontree
     brain = DecisionTreeBrain.new
     return brain
@@ -37,11 +45,5 @@ class BrainFactory
     brain.action = MoveTowardsClosestStar.new
     return brain
   end
-
-  #def self.static_action_random_star
-  #  brain = StaticActionBrain.new
-  #  brain.action = MoveTowardsRandomStar.new
-  #  return brain
-  #end
   
 end
