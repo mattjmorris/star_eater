@@ -3,7 +3,7 @@ class GeneticAlgorithmBrain
   def initialize(params)
     @policy = nil
     @environment_data = nil
-    @estimated_star_values = params[:estimated_star_values] ||= {0 => -1, 1 => 2, 2 => 4}
+    @estimated_star_values = params[:estimated_star_values] ||= {0 => -4, 1 => 1, 2 => 2}
   end
 
   def set_policy(policy)

@@ -15,8 +15,8 @@ class NonGuiRunner
 
     params[:episode_length] ||= 1000
     params[:num_episodes] ||= 1
-    params[:brain_types] ||= [:random_selector, :decisiontree, :reinforcement, :static_action_closest_star]
-    #params[:brain_types] ||= [:genetic_algorithm]
+    #params[:brain_types] ||= [:random_selector, :decisiontree, :reinforcement, :static_action_closest_star]
+    params[:brain_types] ||= [:genetic_algorithm]
     params[:star_collection_types] ||= [:progressive]
     params[:num_stars] ||= 3
     params[:size_x] ||= 800
@@ -50,7 +50,7 @@ class NonGuiRunner
           
         end
         
-        #recorder.write
+        recorder.write
 
       end
 
