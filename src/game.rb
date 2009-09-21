@@ -10,7 +10,7 @@ class Game
   def initialize(params = {})
 
     @environment = EnvironmentFactory.create_environment(params)
-    brain = BrainFactory.create_brain(params[:brain_type])
+    brain = BrainFactory.create_brain(params)
     @ship = Ship.new(brain)
 
     @tick_count = 0

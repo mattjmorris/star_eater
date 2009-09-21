@@ -11,6 +11,11 @@ module AutoId
     self.object_id <=> other.object_id
   end
 
+  def flush
+    @@all_ids = []
+    @@last_auto_id = -1    
+  end
+
   private
 
   def assign_id(id)

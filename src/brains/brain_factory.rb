@@ -11,36 +11,36 @@ require File.dirname(__FILE__) + "/static_action_brain"
 # if you are using some form of reinforcement learning brain)
 class BrainFactory
 
-  def self.create_brain(brain_type)
-    brain_type ||= :reinforcement
-    return self.send(brain_type)
+  def self.create_brain(params)
+    params[:brain_type] ||= :reinforcement
+    return self.send(params[:brain_type], params)
   end
 
-  def self.reinforcement
+  def self.reinforcement(params={})
     brain = ReinforcementBrain.new
     policy = SimpleActionSelection.new
     brain.set_policy(policy)
     return brain
   end
 
-  def self.genetic_algorithm
-    brain = GeneticAlgorithmBrain.new
+  def self.genetic_algorithm(params={})
+    brain = GeneticAlgorithmBrain.new(params)
     policy = SimpleActionSelection.new
     brain.set_policy(policy)
     return brain
   end
 
-  def self.decisiontree
+  def self.decisiontree(params={})
     brain = DecisionTreeBrain.new
     return brain
   end
 
-  def self.random_selector
+  def self.random_selector(params={})
     brain = RandomSelectorBrain.new
     return brain
   end
 
-  def self.static_action_closest_star
+  def self.static_action_closest_star(params={})
     brain = StaticActionBrain.new
     brain.action = MoveTowardsClosestStar.new
     return brain

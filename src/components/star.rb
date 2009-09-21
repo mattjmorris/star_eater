@@ -10,7 +10,8 @@ class Star
 
   def initialize (params = {:max_x => 800, :max_y => 600})
 
-    assign_id(id)
+    #assign_id(id)
+    @id = params[:id]
     
     @diameter = 15
     set_min_and_max_x_and_y(params[:max_x], params[:max_y])

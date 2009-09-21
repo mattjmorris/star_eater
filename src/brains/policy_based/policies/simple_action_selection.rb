@@ -21,6 +21,7 @@ class SimpleActionSelection
 
   def calc_velocity(environment_data)
     @max_num_stars_seen = environment_data[:star_position_hash].size if environment_data[:star_position_hash].size > @max_num_stars_seen
+#puts "I am going after star #{@id_of_selected_star_to_eat}"
     return @move_towards_specified_star.calc_velocity(@id_of_selected_star_to_eat, environment_data)
   end
 

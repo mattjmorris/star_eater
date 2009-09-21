@@ -11,8 +11,8 @@ class StarFactory
 
   def self.simple(num_stars, width, height)
     star_collection = StarCollection.new
-    num_stars.times do
-      star = Star.new(:max_x => width, :max_y => height)
+    num_stars.times do |idx|
+      star = Star.new(:max_x => width, :max_y => height, :id => idx)
       star.visible_limit = rand(100)
       star.invisible_limit = 20
       star.reward_function = lambda{10}
@@ -25,7 +25,7 @@ class StarFactory
   def self.progressive(num_stars, width, height)
     star_collection = StarCollection.new
     num_stars.times do |idx|
-      star = Star.new(:max_x => width, :max_y => height)
+      star = Star.new(:max_x => width, :max_y => height, :id => idx)
       star.visible_limit = 99999999
       star.invisible_limit = 0
       star.reward_function = lambda{idx * 5}
@@ -38,7 +38,7 @@ class StarFactory
   def self.progressive_variable(num_stars, width, height)
     star_collection = StarCollection.new
     num_stars.times do |idx|
-      star = Star.new(:max_x => width, :max_y => height)
+      star = Star.new(:max_x => width, :max_y => height, :id => idx)
       star.visible_limit = 99999999
       star.invisible_limit = 0
       star.reward_function = lambda do
