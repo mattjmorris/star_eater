@@ -18,7 +18,7 @@ class Environment
     @star_id_delivering_reward = nil
     @reward, @star_id_delivering_reward = @star_collection.tick(ship_position)
     @bank += @reward
-    @recorder.add(@reward, @star_id_delivering_reward)
+    @recorder.add(@reward, @star_id_delivering_reward) if @recorder
   end
 
   # Can obfuscate as much as we like
