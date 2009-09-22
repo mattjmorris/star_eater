@@ -15,7 +15,7 @@ class NonGuiRunner
 
     params[:episode_length] ||= 1000
     params[:num_episodes] ||= 5
-    params[:brain_types] ||= [:static_action_closest_star, :reinforcement, :genetic_algorithm]
+    params[:brain_types] ||= [:static_action_closest_star, :reinforcement, :genetic_algorithm, :decisiontree]
     params[:star_collection_types] ||= [:progressive]
     params[:num_stars] ||= 3
     params[:size_x] ||= 800
