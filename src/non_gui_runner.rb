@@ -13,7 +13,7 @@ class NonGuiRunner
 
   def run_game(params = {})
 
-    params[:episode_length] ||= 1000
+    params[:episode_length] ||= 10000
     params[:num_episodes] ||= 5
     params[:brain_types] ||= [:static_action_closest_star, :reinforcement, :genetic_algorithm, :decisiontree]
     params[:star_collection_types] ||= [:progressive]
@@ -55,6 +55,7 @@ class NonGuiRunner
 
       sum = collected_values.inject{|a,b| a+b}
       puts "Brain type #{brain_type.to_s} had a total acheived = #{sum} for an average of #{sum / params[:num_episodes]}"
+      collected_values = []
         
     end
 
