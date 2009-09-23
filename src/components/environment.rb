@@ -2,10 +2,9 @@ class Environment
 
   attr_accessor :width, :height, :ship_position, :star_collection, :reward, :star_id_delivering_reward, :bank, :episode_length
 
-  def initialize(recorder)
+  def initialize()
     @reward = 0
     @bank = 0
-    @recorder = recorder
   end
 
   def tick(ship_velocity, tick_count)
@@ -18,7 +17,6 @@ class Environment
     @star_id_delivering_reward = nil
     @reward, @star_id_delivering_reward = @star_collection.tick(ship_position)
     @bank += @reward
-    @recorder.add(@reward, @star_id_delivering_reward)
   end
 
   # Can obfuscate as much as we like

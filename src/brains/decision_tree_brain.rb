@@ -9,7 +9,7 @@ class DecisionTreeBrain
   include BrainUtilityMethods
   attr_writer :training_mode
 
-  DATA_FILE = "decision_tree_training_data.csv"
+  DATA_FILE = "training_data-decision_tree.csv"
 
   def initialize
     @data_labels = ["ID", "Grouping", "Near Neighbors", "Worthwhile?"]

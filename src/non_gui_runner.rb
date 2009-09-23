@@ -15,8 +15,8 @@ class NonGuiRunner
 
     params[:episode_length] ||= 1000
     params[:num_episodes] ||= 1
-    #params[:brain_types] ||= [:random_selector, :decisiontree, :reinforcement, :static_action_closest_star]
-    params[:brain_types] ||= [:genetic_algorithm]
+    #params[:brain_types] ||= [:random_selector, :decisiontree, :reinforcement, :static_action_closest_star, :singular_value_decomposition]
+    params[:brain_types] ||= [:singular_value_decomposition]
     params[:star_collection_types] ||= [:progressive]
     params[:num_stars] ||= 3
     params[:size_x] ||= 800
@@ -32,12 +32,13 @@ class NonGuiRunner
 
         params[:num_episodes].times do
 
-          @game = Game.new(params.merge({:brain_type => brain_type, :star_collection_type => star_collection_type, :recorder => recorder}))
+          @game = Game.new(params.merge({:brain_type => brain_type, :star_collection_type => star_collection_type}))
           @tick_count = 0
 
           params[:episode_length].times do
             @tick_count += 1
             @game.tick
+            recorder.tick(@tick_count, @game.environment)
             #show_log_info
           end
 

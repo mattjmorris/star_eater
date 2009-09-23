@@ -6,6 +6,7 @@ require File.dirname(__FILE__) + "/policy_based/genetic_algorithm_brain"
 require File.dirname(__FILE__) + "/decision_tree_brain"
 require File.dirname(__FILE__) + "/random_selector_brain"
 require File.dirname(__FILE__) + "/static_action_brain"
+require File.dirname(__FILE__) + "/svd_brain"
 
 # This is the place to set up your brain and inject any objects it needs (such as an instance of a particular policy
 # if you are using some form of reinforcement learning brain)
@@ -46,4 +47,9 @@ class BrainFactory
     return brain
   end
   
+  def self.singular_value_decomposition(params={})
+    brain = SvdBrain.new
+    return brain
+  end
+
 end
