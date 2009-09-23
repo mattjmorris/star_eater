@@ -15,7 +15,7 @@ class NonGuiRunner
 
     params[:episode_length] ||= 10000
     params[:num_episodes] ||= 5
-    params[:brain_types] ||= [:static_action_closest_star, :reinforcement, :genetic_algorithm, :decisiontree]
+    params[:brain_types] ||= [:random_selector, :static_action_closest_star, :reinforcement, :genetic_algorithm, :decisiontree, :singular_value_decomposition]
     params[:star_collection_types] ||= [:progressive]
     params[:num_stars] ||= 3
     params[:size_x] ||= 800
@@ -43,14 +43,14 @@ class NonGuiRunner
 
           @rewards_accumulated = @game.environment.bank
 
-          #puts "Brain type #{brain_type.to_s} accumulated #{@rewards_accumulated} points when running with star collection type #{star_collection_type} for #{params[:episode_length]} ticks"
+          puts "Brain type #{brain_type.to_s} accumulated #{@rewards_accumulated} points when running with star collection type #{star_collection_type} for #{params[:episode_length]} ticks"
 
           collected_values << @rewards_accumulated
           @game.environment.bank = 0
           
         end
         
-        #recorder.write
+        recorder.write
 
       end
 

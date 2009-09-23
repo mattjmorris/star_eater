@@ -25,8 +25,9 @@ class RandomSelectorBrain
   end
 
   def determine_next_target
-    star = nearest_star(@data[:star_position_hash])
-    @target = {:id => star[:id], :position => star[:position], :initial_distance => star_dist(star[:position])}
+    val = rand(@data[:star_position_hash].length)
+    star = @data[:star_position_hash].detect{|x| x if x[0] == val}
+    @target = {:id => star[0], :position => star[1], :initial_distance => star_dist(star[1])}
   end
 
   def process_and_clear_target
